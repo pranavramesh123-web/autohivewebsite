@@ -69,8 +69,8 @@ function App() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-purple-500/5 blur-xl pointer-events-none" />
 
             <div className="relative z-10">
-              <h2 className="modal-title">Build Your Agent</h2>
-              <p className="modal-desc">Tell us what you want to automate.</p>
+              <h2 className="modal-title">Book Free Audit</h2>
+              <p className="modal-desc">Select a date and time for your free 15-minute AI strategy audit.</p>
               <button
                 onClick={handleCloseModal}
                 className="modal-close-btn"
@@ -78,11 +78,39 @@ function App() {
               >
                 ✕
               </button>
-              <form className="modal-form" onSubmit={(e) => { e.preventDefault(); alert("Thanks! AutoHive will reach out within 24 hours."); handleCloseModal(); }}>
-                <input type="text" placeholder="Name" className="form-input" required />
-                <input type="email" placeholder="Work Email" className="form-input" required />
-                <input type="text" placeholder="Company Name" className="form-input" required />
-                <textarea placeholder="What tasks do you want to automate?" className="form-input form-textarea" required></textarea>
+              <form className="modal-form" onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const date = formData.get('date');
+                const time = formData.get('time');
+                alert(`Thanks ${name}! We've scheduled your audit for ${date} at ${time}. A calendar invite has been sent to ${email}.`);
+                handleCloseModal();
+              }}>
+                <input type="text" name="name" placeholder="Name" className="form-input" required />
+                <input type="email" name="email" placeholder="Work Email" className="form-input" required />
+                <input type="text" name="company" placeholder="Company Name" className="form-input" required />
+                
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <select name="date" className="form-input" required>
+                    <option value="" disabled selected hidden>Choose Date</option>
+                    <option value="Thursday, June 18">Thu, June 18</option>
+                    <option value="Friday, June 19">Fri, June 19</option>
+                    <option value="Monday, June 22">Mon, June 22</option>
+                    <option value="Tuesday, June 23">Tue, June 23</option>
+                  </select>
+                  <select name="time" className="form-input" required>
+                    <option value="" disabled selected hidden>Choose Time (EST)</option>
+                    <option value="10:00 AM">10:00 AM EST</option>
+                    <option value="11:30 AM">11:30 AM EST</option>
+                    <option value="1:00 PM">1:00 PM EST</option>
+                    <option value="2:30 PM">2:30 PM EST</option>
+                    <option value="4:00 PM">4:00 PM EST</option>
+                  </select>
+                </div>
+
+                <textarea name="automation" placeholder="What tasks do you want to automate?" className="form-input form-textarea" required></textarea>
                 <button type="submit" className="w-full btn btn-primary mt-2">Request My Audit</button>
               </form>
             </div>

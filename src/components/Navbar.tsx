@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
                     onClick={onOpenModal}
                     className="btn btn-primary text-sm hidden-mobile"
                 >
-                    Build My Agent
+                    Book Free Audit
                 </button>
 
                 {/* Mobile Menu Button */}

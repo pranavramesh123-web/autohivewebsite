@@ -486,3 +486,8 @@ ul {
 .mt-2 {
   margin-top: 0.5rem;
 }
+
+select.form-input option {
+  background-color: #0B0B0F;
+  color: white;
+}

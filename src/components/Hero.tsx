@@ -141,7 +141,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                             onClick={onOpenModal}
                             className="btn btn-primary text-lg"
                         >
-                            Build My Agent
+                            Book Free Audit
                         </button>
                         <a href="#roi" className="btn btn-secondary text-lg">
                             See the ROI
